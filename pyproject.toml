@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "gideonravenor1-infra"
+version = "0.1.0"
+description = ""
+authors = ["Fedor Obolihin <fedor.obolihin@zyfra.com>"]
+readme = "README.md"
+packages = [{include = "gideonravenor1_infra"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pre-commit = "^3.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
