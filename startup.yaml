@@ -12,7 +12,7 @@ write_files:
     content: |
         #!/bin/bash
         sudo apt update && \
-        sudo apt install -y git &&\
+        sudo apt install -y git && \
         cd /home/yc-user && \
         git clone -b cloud-testapp https://github.com/Otus-DevOps-2023-09/GideonRavenor1_infra.git && \
         cd GideonRavenor1_infra && \
