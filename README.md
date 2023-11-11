@@ -62,7 +62,7 @@ sudo apt -y install pritunl mongodb-org sudo systemctl enable mongod pritunl sud
 
 # Основные сервисы Yandex Cloud
 Основное задание:
-testapp_IP = 51.250.9.173
+testapp_IP = 158.160.35.201
 
 testapp_port = 9292
 
@@ -78,8 +78,8 @@ testapp_port = 9292
 
 ```bash
 yc compute instance create
---name reddit-app-2
---hostname reddit-app-2
+--name reddit-app
+--hostname reddit-app
 --memory=4
 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB
 --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4
@@ -88,3 +88,4 @@ yc compute instance create
 ```
 
 В результате получаем ВМ с развернутым приложением.
+yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 --metadata-from-file='user-data=startup.yaml' --metadata serial-port-enable=1

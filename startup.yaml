@@ -19,7 +19,6 @@ write_files:
         sudo ./install_mongodb.sh && \
         sudo ./install_ruby.sh && \
         cd .. && \
-        sudo ./deploy.sh
-
+        sudo /home/yc-user/GideonRavenor1_infra/deploy.sh
 runcmd:
   - /home/yc-user/startup-script.sh
