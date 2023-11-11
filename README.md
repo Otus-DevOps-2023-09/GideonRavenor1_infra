@@ -72,17 +72,19 @@ testapp_port = 9292
 - install_mongodb.sh
 - deploy.sh
 
-Написал startup config - yc-config.txt
+Написал startup config - startup.yaml
 
 Команда CLI для развертки ВМ с применением конфига:
 
+```bash
 yc compute instance create
---name reddit-app
---hostname reddit-app
+--name reddit-app-2
+--hostname reddit-app-2
 --memory=4
 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB
 --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4
+--metadata-from-file='user-data=startup.yaml'
 --metadata serial-port-enable=1
---metadata-from-file user-data=yc-config.txt
+```
 
 В результате получаем ВМ с развернутым приложением.
