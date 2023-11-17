@@ -1,5 +1,7 @@
+# Знакомство с Yandex Cloud.
 IP адреса:
 bastion_IP = 158.160.38.244
+
 someinternalhost_IP = 10.128.0.11
 
 Подключение к бастионному хосту:
@@ -56,3 +58,33 @@ sudo apt -y install pritunl mongodb-org sudo systemctl enable mongod pritunl sud
 3. Сохраните и закройте файл
 4. Теперь вы можете подключаться к удаленному серверу 10.128.0.11, используя команду `ssh someinternalhost`. Она будет автоматически выполнять указанную команду с пробросом через "jump" хост.
 Теперь вы можете удобно подключаться к удаленному серверу 10.128.0.11, используя созданную команду `ssh someinternalhost`.
+
+
+# Основные сервисы Yandex Cloud
+Основное задание:
+testapp_IP = 51.250.83.71
+
+testapp_port = 9292
+
+Дополнительное задание:
+Написал 3 скрипта:
+- install_ruby.sh
+- install_mongodb.sh
+- deploy.sh
+
+Написал startup config - startup.yaml
+
+Команда CLI для развертки ВМ с применением конфига:
+
+```bash
+yc compute instance create \
+--name reddit-app \
+--hostname reddit-app \
+--memory=4 \
+--create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
+--network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+--metadata-from-file='user-data=startup.yaml' \
+--metadata serial-port-enable=1
+```
+
+В результате получаем ВМ с развернутым приложением.

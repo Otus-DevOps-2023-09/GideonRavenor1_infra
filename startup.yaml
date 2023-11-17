@@ -1,0 +1,24 @@
+#cloud-config
+users:
+  - name: yc-user
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFisbPZQqIilT5zmq9fXu50rrbnNVowYWqXz2AvBqi95wSsvMoLVJAp7cy38XsONfgXr3jRVt6xdfI9Dgf8jtxXGjsxTdzuT38Uoo7ChsyW4Asxba4BxMX2D7zO3+L48FUHW4rgG1kO5v8RGWpxwzt9CxQSxczEOfgTGDKg8VM7ewkCD333fig18Ar/fQ17UuEqiMZEXqh3wYk1f4TgoxdX3CuLfySfiDSPFhoIXf291tONsFgJPplu62yQxEQZlE/s7Po9B264UdLIaziUGg8KNhbujYdw9mMuus6tGx2RgPF9lvaW9lERbrcXo/QuqhvTkwAdwh7oNqNDOtJsXNN2nV/gsP184J0FslBYgZMYyPsIbRDg1pdDDt43dzPHthFvcWEj3CsCXC2IWGrUUX6oxaQBMdNH/Txx0qrfF5TIUkwvG9pSH+thL2z713a/diPHnxKY7wmmBChKJDrjcyswt/FP8xdyDHJ+SQjzLzS1RZbkF3Cz8shY7fzHjkVIv0= gideon-ravenor'
+write_files:
+  - path: /home/yc-user/startup-script.sh
+    permissions: '0755'
+    content: |
+        #!/bin/bash
+        sudo apt update && \
+        sudo apt install -y git && \
+        cd /home/yc-user && \
+        git clone -b cloud-testapp https://github.com/Otus-DevOps-2023-09/GideonRavenor1_infra.git && \
+        cd GideonRavenor1_infra && \
+        sudo ./install_mongodb.sh && \
+        sudo ./install_ruby.sh && \
+        cd .. && \
+        sudo /home/yc-user/GideonRavenor1_infra/deploy.sh
+runcmd:
+  - /home/yc-user/startup-script.sh
