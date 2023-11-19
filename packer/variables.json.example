@@ -1,0 +1,5 @@
+{
+   "service_account_key_file": "otus_key.json",
+   "folder_id": "ваш id",
+   "source_image_id": "id vm"
+}

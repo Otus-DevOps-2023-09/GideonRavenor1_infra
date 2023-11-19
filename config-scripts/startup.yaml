@@ -16,9 +16,9 @@ write_files:
         cd /home/yc-user && \
         git clone -b cloud-testapp https://github.com/Otus-DevOps-2023-09/GideonRavenor1_infra.git && \
         cd GideonRavenor1_infra && \
-        sudo ./install_mongodb.sh && \
-        sudo ./install_ruby.sh && \
+        sudo ./config-scripts/install_mongodb.sh && \
+        sudo ./config-scripts/install_ruby.sh && \
         cd .. && \
-        sudo /home/yc-user/GideonRavenor1_infra/deploy.sh
+        sudo /home/yc-user/GideonRavenor1_infra/config-scripts/deploy.sh
 runcmd:
   - /home/yc-user/startup-script.sh
