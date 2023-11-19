@@ -83,8 +83,25 @@ yc compute instance create \
 --memory=4 \
 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
 --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
---metadata-from-file='user-data=startup.yaml' \
+--metadata-from-file='config-scripts/startup.yaml' \
 --metadata serial-port-enable=1
 ```
 
 В результате получаем ВМ с развернутым приложением.
+
+# Подготовка образов с помощью Packer
+- Перенес наработки с предыдущего ДЗ в директорию config-scripts
+- Установил Packer
+- Установил плагин yandex
+- Создал сервисный аккаунт в yc
+- Делегировал права сервисному аккаунту для Packer
+- Создал IAM key и экспортировал его в файл.
+- Создал файл шаблон packer ubuntu16.json
+- Добавил скрипты install_mongodb.sh и install_ruby.sh в провиженеры
+- Создал скрипты install_mongodb.sh и install_ruby.sh
+- Провел проверку на ошибки шаблона packer
+- Произвел сборку образа из шаблона
+- Создал VM на основе образа
+- Установил reddit на созданной VM
+- Параметризировал шаблон с помощью файла variables.json и создал альтернативный файл variables.json.examples файл variables.json добавил в .gitignore
+- Пересоздал VM с помощью параметризированного шаблона командой: packer build -var-file="./variables.json" ./ubuntu16.json
