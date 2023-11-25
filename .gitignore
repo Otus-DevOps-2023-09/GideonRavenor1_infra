@@ -4,4 +4,4 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
- terraform/otus_key.json
+/terraform/otus_key.json
