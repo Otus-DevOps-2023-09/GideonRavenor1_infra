@@ -105,3 +105,11 @@ yc compute instance create \
 - Установил reddit на созданной VM
 - Параметризировал шаблон с помощью файла variables.json и создал альтернативный файл variables.json.examples файл variables.json добавил в .gitignore
 - Пересоздал VM с помощью параметризированного шаблона командой: packer build -var-file="./variables.json" ./ubuntu16.json
+
+
+# Знакомство с Terraform
+## Основное задание:
+* Создан сервисный аккаунт с ролью editor для terraform
+* Создан файл main.tf, при помощи которого разворачивается ВМ из ранее подготовленного образа, с предустановленными Ruby и Mongodb, а также запущенным приложением Reddit с использованием systemd
+* Настроен вывод необходимых переменных после деплоя ВМ в файле outputs.tf
+* Настроен вынос переменных при помощи файлов variables.tf и terraform.tfvars
