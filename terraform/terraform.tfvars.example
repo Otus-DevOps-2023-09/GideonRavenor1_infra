@@ -1,0 +1,8 @@
+cloud_id                 = "b1ggd92nf1qjakl34fqg"
+folder_id                = "87yhakjsf56fahffa"
+zone                     = "ru-central1-a"
+image_id                 = "fd8d2n6dmuphuhk6ie5t"
+public_key_path          = "~/.ssh/yc.pub"
+subnet_id                = "e9bjhq7onjjd4i1irrsl"
+service_account_key_file = "otus_key.json"
+private_key_path         = "~/.ssh/yc"
