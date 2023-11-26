@@ -11,9 +11,7 @@ variable zone {
 variable public_key_path {
   description = "Path to the public key used for ssh access"
 }
-variable image_id {
-  description = "Disk image"
-}
+
 variable subnet_id {
   description = "Subnet"
 }
@@ -23,4 +21,24 @@ variable service_account_key_file {
 
 variable "private_key_path" {
   description = "Path to the private key used for ssh access"
+}
+
+variable app_disk_image {
+  description = "Disk image for reddit app"
+  default     = "reddit-app-base-1701005795"
+}
+
+variable db_disk_image {
+  description = "Disk image for reddit db"
+  default     = "reddit-db-base-1701005591"
+}
+
+variable cpu_count {
+  description = "Number of cpu core"
+  default     = 2
+}
+
+variable mem_size {
+  description = "Memory size"
+  default     = 2
 }
