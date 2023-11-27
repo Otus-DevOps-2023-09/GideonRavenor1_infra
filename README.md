@@ -113,3 +113,28 @@ yc compute instance create \
 * Создан файл main.tf, при помощи которого разворачивается ВМ из ранее подготовленного образа, с предустановленными Ruby и Mongodb, а также запущенным приложением Reddit с использованием systemd
 * Настроен вывод необходимых переменных после деплоя ВМ в файле outputs.tf
 * Настроен вынос переменных при помощи файлов variables.tf и terraform.tfvars
+
+
+# Принципы организации инфраструктурного кода и работа над инфраструктурой в команде на примере Terraform
+## Основное задание
+* Добавил с main.tf ресурсы yandex_vpc_network и yandex_vpc_subnet, затем созда ресурсы и удалил их
+* Добавил ресурс network_interface, затем созда ресурсы и удалил их
+* Создал два новых шаблона db.json и app.json
+* Вынес конфигурацию их main.tf в app.tf, объявил переменную app_disk_image
+* Вынес конфигурацию их main.tf в db.tf, объявил переменную db_disk_image
+* Создал vpc.tf вынес в него ресурсы yandex_vpc_network и yandex_vpc_subnet
+* Оставил в main.tf только описание провайдера
+* Добавил переменные в outputs и применил новую конфигурацию
+* Создал директорию module, в ней директорию db и app
+* В директориях db и app сконфигурировал файлы main.tf, variables.tf, outputs.tf
+* Удалил файлы db.tf, app.tf, vpc.tf в директории terraform
+* В файл main.tf добавил вызов модулей
+* Использовал команду terraform get
+* Отредактировал файл outputs.tf и вызвал terraform plan для проверки
+* В директории terraform создал две директории: stage и prod
+* В директории stage и prod скопировал файлы main.tf, variables.tf, outputs.tf, terraform.tfvars, key.json
+* Поменял пути к модулям в main.tf
+* В директории stage и prod выполнил: terraform get, terraform init, terraform plan, terraform apply, terraform destroy
+* Удалил из папки terraform файлы main.tf, outputs.tf, terraform.tfvars, variables.tf
+* Параметризовал конфигурацию модулей
+* Отформатировал конфигурационные файлы, используя команду terraform fmt

@@ -42,13 +42,3 @@ variable "mem_size" {
   description = "Memory size"
   default     = 2
 }
-
-variable "bucket_name" {
-  description = "Name of bucket"
-}
-variable "access_key" {
-  description = "access key"
-}
-variable "secret_key" {
-  description = "secret key"
-}
