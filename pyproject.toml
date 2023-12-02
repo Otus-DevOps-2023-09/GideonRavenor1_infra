@@ -9,6 +9,7 @@ packages = [{include = "gideonravenor1_infra"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pre-commit = "^3.5.0"
+ansible = "^9.0.1"
 
 
 [build-system]
